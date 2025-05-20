@@ -13,10 +13,11 @@
         header {
             position: sticky;
             top: 0;
-            background-color: purple;
+            background-color: teal;
             color: white;
-            padding: 15px;
-            font-size: 24px;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
         }
         .top-section {
             display: flex;
@@ -26,15 +27,20 @@
             height: 100vh;
             background-color: lavender;
         }
-        .middle-section, .bottom-section {
-            padding: 40px;
-        }
         h1 {
-            font-size: 48px;
+            font-size: 60px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        h1:hover {
+            transform: scale(1.1);
         }
         h3 {
             font-size: 24px;
             margin-top: 10px;
+        }
+        .middle-section, .bottom-section {
+            padding: 40px;
         }
         ul {
             list-style-type: none;
@@ -54,6 +60,22 @@
             width: 200px;
             height: auto;
             border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.1);
+        }
+        button {
+            background-color: teal;
+            color: white;
+            padding: 15px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: darkcyan;
         }
     </style>
 </head>
@@ -66,6 +88,7 @@
     <div class="top-section">
         <h1>Girls Who Code</h1>
         <h3>Empowering young girls to explore coding, build projects, and shape the future of tech!</h3>
+        <button onclick="alert('Excited to join? Reach out to us and let’s start coding!')">Join Us!</button>
     </div>
 
     <div class="middle-section">
@@ -89,3 +112,4 @@
 
 </body>
 </html>
+
