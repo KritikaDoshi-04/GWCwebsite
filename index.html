@@ -7,102 +7,113 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Courier New', sans-serif;
             text-align: center;
-            background-color: #ffe0f0;
+            background-color: #fce4ec; /* Light mode background */
             color: #333;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
         header {
             position: sticky;
             top: 0;
-            background-color: hotpink;
+            background-color: #e91e63;
             color: white;
             padding: 20px;
-            font-size: 28px;
+            font-size: 30px;
             font-weight: bold;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .toggle-container {
+            display: flex;
+            align-items: center;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 25px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            border-radius: 25px;
+            transition: 0.4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 3.5px;
+            background-color: #e91e63;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+        input:checked + .slider {
+            background-color: #333;
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+            background-color: white;
+        }
+        .dark-mode {
+            background-color: #212121;
+            color: white;
         }
         .top-section {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 80vh;
-            background-color: #ffb6c1;
-            padding: 20px;
-            transition: background-color 0.5s ease-in-out;
+            height: 70vh;
+            background-color: #f8bbd0;
+            transition: background-color 0.5s ease;
         }
-        .top-section:hover {
-            background-color: #ff9aae;
+        .dark-mode .top-section {
+            background-color: #424242;
         }
-        h1 {
-            font-size: 60px;
-            font-weight: bold;
-            transition: transform 0.3s ease-in-out;
-            color: darkred;
-        }
-        h1:hover {
-            transform: scale(1.1);
-        }
-        h3 {
-            font-size: 24px;
-            margin-top: 10px;
-            font-weight: 500;
-            color: #555;
-        }
-        .middle-section, .bottom-section, .for-us-section {
+        .section {
             padding: 40px;
             background-color: white;
             margin: 20px auto;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 900px;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            font-size: 20px;
-            padding: 10px;
-            font-weight: bold;
-            color: #333;
-        }
-        .quote {
-            font-style: italic;
-            font-size: 18px;
-            color: #555;
-            padding: 10px;
-            border-left: 4px solid hotpink;
-            margin: 20px 0;
-        }
-        .button-container {
-            margin-top: 20px;
+        .dark-mode .section {
+            background-color: #333;
+            color: white;
         }
         .btn {
-            padding: 15px 25px;
+            padding: 15px 30px;
             font-size: 18px;
             font-weight: bold;
             border: none;
-            border-radius: 30px;
+            border-radius: 35px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
         }
         .btn-main {
-            background-color: hotpink;
+            background-color: #e91e63;
             color: white;
         }
-        .btn-main:hover {
-            background-color: deeppink;
-            transform: scale(1.05);
-        }
-        .btn-lightpink {
-            background-color: pink;
-            color: white;
-        }
-        .btn-lightpink:hover {
-            background-color: #ff4d6d;
-            transform: scale(1.05);
+        .dark-mode .btn-main {
+            background-color: #f06292;
         }
     </style>
 </head>
@@ -110,17 +121,23 @@
 
     <header>
         Girls Who Code
+        <div class="toggle-container">
+            <label class="switch">
+                <input type="checkbox" id="mode-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
     </header>
 
     <div class="top-section">
         <h1>Girls Who Code</h1>
         <h3>Empowering young girls to explore coding, build projects, and shape the future of tech!</h3>
         <div class="button-container">
-            <button class="btn btn-main" onclick="window.location.href='https://girlswhocode.com/'">Join Us!</button>
+            <button class="btn btn-main" onclick="window.location.href='https://girlswhocode.com/'">Learn More</button>
         </div>
     </div>
 
-    <div class="middle-section">
+    <div class="section">
         <h2>Our Activities</h2>
         <ul>
             <li>💻 Learning coding fundamentals</li>
@@ -129,12 +146,12 @@
         </ul>
     </div>
 
-    <div class="bottom-section">
+    <div class="section">
         <h2>Why Join?</h2>
         <p>We believe in inclusivity and creating an awesome space for young girls to learn coding, collaborate, and innovate. Whether you're a beginner or an aspiring tech leader, you're always welcome!</p>
     </div>
 
-    <div class="for-us-section">
+    <div class="section">
         <h2>For Us</h2>
         <p>Here’s what we think about Girls Who Code:</p>
         <div class="quote">
@@ -149,13 +166,18 @@
         <div class="quote">
             "Girls Who Code gives us the confidence to chase our dreams and make an impact in tech." - Hannah
         </div>
-        <div class="button-container">
-            <button class="btn btn-lightpink" onclick="window.location.href='https://girlswhocode.com/'">Learn More</button>
-        </div>
     </div>
+
+    <script>
+        const modeToggle = document.getElementById("mode-toggle");
+        modeToggle.addEventListener("change", () => {
+            document.body.classList.toggle("dark-mode");
+        });
+    </script>
 
 </body>
 </html>
+
 
 
 
